@@ -5,6 +5,45 @@
 ## Technologies Used
 
 - Next.js
-- Tailwindcss
-- Typescript
 - Mantine UI
+- TailwindCSS
+- TypeScript
+- Next Auth
+- Axios
+- Tanstack React Query
+
+## Documentation
+
+If you want to create this project on your own, do the following steps:
+
+1. Create an app-router based next.js app with tailwindcss and typescript. Then, install the necessary packages.
+
+    ```bash
+    npx create-next-app@latest
+    npm i @mantine/core @mantine/hooks @tabler/icons-react next-auth axios @tanstack/react-query
+    npm i -D postcss-preset-mantine postcss-simple-vars
+    ```
+
+2. Update the `postcss.config.mjs` file.
+
+    ```js
+    plugins: {
+        "@tailwindcss/postcss": {},
+        "postcss-preset-mantine": {},
+        "postcss-simple-vars": {
+            variables: {
+                "mantine-breakpoint-xs": "40em",
+                "mantine-breakpoint-sm": "48em",
+                "mantine-breakpoint-md": "64em",
+                "mantine-breakpoint-lg": "80em",
+                "mantine-breakpoint-xl": "96em",
+            },
+        },
+    },
+    ```
+
+3. Generate the auth secret environment variable for Next Auth.
+
+    ```bash
+    npx auth secret
+    ```

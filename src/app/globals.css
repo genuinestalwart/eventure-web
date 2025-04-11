@@ -1,9 +1,38 @@
 @import "tailwindcss";
 
 @theme {
+	--color-primary: #ff9500;
+	--color-secondary: #65b1fc;
+	--color-neutral: #333940;
+	--font-genos: Genos, sans-serif;
 	--font-saira: Saira, sans-serif;
 }
 
-body {
-	font-family: var(--font-saira);
+@layer base {
+	* {
+		@apply box-border;
+		&::-webkit-scrollbar {
+			@apply h-2 w-2;
+		}
+		&::-webkit-scrollbar-thumb {
+			@apply bg-primary rounded-lg;
+		}
+	}
+
+	.container {
+		@apply mx-auto;
+	}
+
+	body {
+		@apply font-saira font-normal;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-genos;
+	}
 }
