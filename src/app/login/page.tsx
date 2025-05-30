@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const page = () => {
+const LoginPage = () => {
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [loggingIn, setLoggingIn] = useState<boolean>(false);
 	const router = useRouter();
@@ -63,4 +63,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default LoginPage;

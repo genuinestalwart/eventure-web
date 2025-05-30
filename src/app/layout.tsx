@@ -3,7 +3,7 @@ import { Genos, Saira } from "next/font/google";
 import "./globals.css";
 import "@mantine/core/styles.css";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
-import Providers from "@/components/misc/Providers";
+import Providers from "@/components/Providers";
 
 const genos = Genos({
 	display: "swap",

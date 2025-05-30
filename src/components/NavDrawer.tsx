@@ -8,7 +8,7 @@ import { useHover } from "@mantine/hooks";
 
 interface Props {
 	disabled: boolean;
-	handleClick: Function;
+	handleLogOut: Function;
 	loading: boolean;
 	loggingOut: boolean;
 	user: User | null;
@@ -16,7 +16,7 @@ interface Props {
 
 const NavDrawer: React.FC<Props> = ({
 	disabled,
-	handleClick,
+	handleLogOut,
 	loading,
 	loggingOut,
 	user,
@@ -70,7 +70,7 @@ const NavDrawer: React.FC<Props> = ({
 								disabled={disabled}
 								loading={loggingOut}
 								mt='auto'
-								onClick={() => handleClick()}
+								onClick={() => handleLogOut()}
 								radius='md'
 								rightSection={<IconLogout />}
 								variant='filled'>

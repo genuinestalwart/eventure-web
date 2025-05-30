@@ -9,7 +9,7 @@ import { User } from "@/types/global";
 
 interface Props {
 	disabled: boolean;
-	handleClick: Function;
+	handleLogOut: Function;
 	loading: boolean;
 	loggingOut: boolean;
 	user: User | null;
@@ -17,7 +17,7 @@ interface Props {
 
 const NavBar: React.FC<Props> = ({
 	disabled,
-	handleClick,
+	handleLogOut,
 	loading,
 	loggingOut,
 	user,
@@ -64,7 +64,7 @@ const NavBar: React.FC<Props> = ({
 						color={disabled ? "gray.7" : "red.6"}
 						disabled={disabled}
 						loading={loggingOut}
-						onClick={() => handleClick()}
+						onClick={() => handleLogOut()}
 						radius='sm'
 						size='lg'
 						variant='subtle'>

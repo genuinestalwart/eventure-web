@@ -1,20 +1,27 @@
 "use client";
 import useAuth from "@/hooks/useAuth";
-import { Flex, Image, Text, Title } from "@mantine/core";
+import { Button, Flex, Image, Space, Text, Title } from "@mantine/core";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
-import NavBar from "@/components/misc/NavBar";
-import NavDrawer from "@/components/misc/NavDrawer";
+import NavBar from "@/components/NavBar";
+import NavDrawer from "@/components/NavDrawer";
+import ConfirmModal from "@/components/modals/ConfirmModal";
 
 const Header = () => {
 	const [disabled, setDisabled] = useState<boolean>(false);
 	const [loggingOut, setLoggingOut] = useState<boolean>(false);
+	const [opened, setOpened] = useState<boolean>(false);
 	const { loading, user } = useAuth();
 
-	const handleClick = async () => {
+	const handleConfirm = async () => {
+		setOpened(false);
 		setDisabled(true);
 		setLoggingOut(true);
 		await signOut();
+	};
+
+	const handleLogOut = () => {
+		setOpened(true);
 	};
 
 	return (
@@ -38,7 +45,7 @@ const Header = () => {
 			<Flex component='nav'>
 				<NavBar
 					disabled={disabled}
-					handleClick={handleClick}
+					handleLogOut={handleLogOut}
 					loading={loading}
 					loggingOut={loggingOut}
 					user={user}
@@ -46,11 +53,31 @@ const Header = () => {
 
 				<NavDrawer
 					disabled={disabled}
-					handleClick={handleClick}
+					handleLogOut={handleLogOut}
 					loading={loading}
 					loggingOut={loggingOut}
 					user={user}
 				/>
+
+				<ConfirmModal
+					confirm={
+						<Button
+							color='red.6'
+							onClick={() => handleConfirm()}
+							variant='filled'>
+							Log Out
+						</Button>
+					}
+					onClose={() => setOpened(false)}
+					opened={opened}
+					setOpened={setOpened}
+					title={{
+						color: "red.6",
+						text: "Waiting for Confirmation",
+					}}>
+					<Text>Are you sure you want to log out?</Text>
+					<Space h='lg' />
+				</ConfirmModal>
 			</Flex>
 		</Flex>
 	);
