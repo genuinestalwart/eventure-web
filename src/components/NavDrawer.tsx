@@ -66,7 +66,7 @@ const NavDrawer: React.FC<Props> = ({
 							<NavLink path='/profile' text='Profile' />
 
 							<Button
-								color={disabled ? "gray.7" : "red.6"}
+								color='red.6'
 								disabled={disabled}
 								loading={loggingOut}
 								mt='auto'

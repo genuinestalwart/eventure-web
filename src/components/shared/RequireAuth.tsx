@@ -14,7 +14,7 @@ const RequireAuth = ({ children }: { children: React.ReactNode }) => {
 		}
 	}, [loading, router, user]);
 
-	return loading || !user ? <PageLoader /> : <>{children}</>;
+	return loading ? <PageLoader /> : user ? <>{children}</> : <></>;
 };
 
 export default RequireAuth;

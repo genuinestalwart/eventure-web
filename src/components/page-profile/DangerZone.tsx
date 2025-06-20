@@ -17,14 +17,19 @@ interface Props {
 	uid: string;
 }
 
-const AccountDelete: React.FC<Props> = ({ uid }) => {
+const DangerZone: React.FC<Props> = ({ uid }) => {
 	const [opened, setOpened] = useState<boolean>(false);
 	const [typedText, setTypedText] = useState<string>("");
 	const axiosSecure = useAxiosSecure();
 
 	const handleConfirm = async () => {
 		await signOut();
-		await axiosSecure.delete(`/user/${uid}`);
+
+		try {
+			await axiosSecure.delete(`/user/${uid}`);
+		} catch (error) {
+			// do something
+		}
 	};
 
 	return (
@@ -51,7 +56,7 @@ const AccountDelete: React.FC<Props> = ({ uid }) => {
 			<ConfirmModal
 				confirm={
 					<Button
-						color='red.6'
+						color='red'
 						disabled={typedText !== "DELETE MY ACCOUNT"}
 						onClick={() => handleConfirm()}
 						variant='filled'>
@@ -63,7 +68,6 @@ const AccountDelete: React.FC<Props> = ({ uid }) => {
 					setTypedText("");
 				}}
 				opened={opened}
-				setOpened={setOpened}
 				title={{ color: "red.6", text: "Action Irreversible!" }}>
 				<Text>
 					Are you sure you want to delete your account? If yes, please
@@ -89,4 +93,4 @@ const AccountDelete: React.FC<Props> = ({ uid }) => {
 	);
 };
 
-export default AccountDelete;
+export default DangerZone;

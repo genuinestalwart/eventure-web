@@ -1,8 +1,7 @@
 "use client";
-import Header from "@/components/shared/Header";
 import PageLoader from "@/components/shared/PageLoader";
 import useAuth from "@/hooks/useAuth";
-import { Button, Card, Flex, Space, Title } from "@mantine/core";
+import { Button, Card, Flex, Space, Text, Title } from "@mantine/core";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -28,38 +27,42 @@ const LoginPage = () => {
 	return loading || user ? (
 		<PageLoader />
 	) : (
-		<>
-			<Header />
+		<Flex
+			align='center'
+			className='container min-h-[calc(100vh_-_5rem)]'
+			component='main'
+			justify='center'
+			px='xl'>
+			<Card className='rounded-xl sm:rounded-2xl' maw='40ch' shadow='xs'>
+				<Title c='primary.6' order={1} ta='center'>
+					Welcome Back, User!
+				</Title>
 
-			<Flex
-				align='center'
-				className='container min-h-[calc(100vh_-_5rem)]'
-				component='main'
-				justify='center'
-				px='xl'>
-				<Card
-					className='rounded-xl sm:rounded-2xl'
-					maw='50ch'
-					shadow='xs'>
-					<Title order={1} ta='center' style={{ color: "white" }}>
-						Welcome Back, User!
-					</Title>
+				<Space h='lg' />
 
-					<Space h='lg' />
+				<Text ta='center'>
+					Since this project is hosted on Vercel, there is some server
+					side issue from Vercel. So you may have to click{" "}
+					<Text fw={800} span>
+						Log In
+					</Text>{" "}
+					at least 5-10 times. Sorry for the inconvenience.
+				</Text>
 
-					<Button
-						color={disabled ? "gray.7" : "primary.6"}
-						disabled={disabled}
-						loading={loggingIn}
-						mx='md'
-						onClick={() => handleClick()}
-						size='md'
-						variant='outline'>
-						Log In with Google
-					</Button>
-				</Card>
-			</Flex>
-		</>
+				<Space h='lg' />
+
+				<Button
+					color='primary.6'
+					disabled={disabled}
+					loading={loggingIn}
+					mx='md'
+					onClick={() => handleClick()}
+					size='md'
+					variant='outline'>
+					Log In with Google
+				</Button>
+			</Card>
+		</Flex>
 	);
 };
 

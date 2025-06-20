@@ -27,7 +27,7 @@ interface Props {
 	uid: string;
 }
 
-const AccountInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
+const GeneralInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 	const [newName, setNewName] = useState<string>(fullName);
 	const [opened, setOpened] = useState<boolean>(false);
 	const [updating, setUpdating] = useState<boolean>(false);
@@ -36,8 +36,14 @@ const AccountInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 	const handleConfirm = async () => {
 		setOpened(false);
 		setUpdating(true);
-		await axiosSecure.patch("/user/update-name", { newName, uid });
-		await refetch();
+
+		try {
+			await axiosSecure.patch("/user/update-name", { newName, uid });
+			await refetch();
+		} catch (error) {
+			// do something
+		}
+
 		setUpdating(false);
 	};
 
@@ -46,7 +52,7 @@ const AccountInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 			<Divider
 				label={
 					<Title c='secondary.3' order={2}>
-						General Information
+						General Info
 					</Title>
 				}
 				labelPosition='center'
@@ -94,7 +100,7 @@ const AccountInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 						color='primary.6'
 						disabled={!newName.trim()}
 						onClick={() => handleConfirm()}
-						variant='filled'>
+						variant='outline'>
 						Update
 					</Button>
 				}
@@ -103,7 +109,6 @@ const AccountInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 					setNewName(fullName);
 				}}
 				opened={opened}
-				setOpened={setOpened}
 				title={{ color: "primary.6", text: "Edit Your Full Name" }}>
 				<Text>Your name must be within 50 characters.</Text>
 
@@ -125,4 +130,4 @@ const AccountInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 	);
 };
 
-export default AccountInfo;
+export default GeneralInfo;

@@ -15,11 +15,15 @@ const useAuth = () => {
 		enabled: !!session?.user?.accessToken,
 		queryKey: ["user", session?.user],
 		queryFn: async () => {
-			const { data } = await axiosSecure.get(
-				`/user/${session?.user?.uid}`
-			);
+			try {
+				const { data } = await axiosSecure.get(
+					`/user/${session?.user?.uid}`
+				);
 
-			return data;
+				return data;
+			} catch (error) {
+				return null;
+			}
 		},
 	});
 

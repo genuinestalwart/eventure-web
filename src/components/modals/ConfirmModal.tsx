@@ -5,7 +5,6 @@ interface Props {
 	confirm: React.ReactNode;
 	onClose: Function;
 	opened: boolean;
-	setOpened: Function;
 	title: { color: string; text: string };
 }
 
@@ -14,7 +13,6 @@ const ConfirmModal: React.FC<Props> = ({
 	confirm,
 	onClose,
 	opened,
-	setOpened,
 	title,
 }) => {
 	return (

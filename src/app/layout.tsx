@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Genos, Saira } from "next/font/google";
 import "./globals.css";
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import Providers from "@/components/Providers";
+import Header from "@/components/Header";
 
 const genos = Genos({
 	display: "swap",
@@ -23,7 +25,7 @@ const saira = Saira({
 
 export const metadata: Metadata = {
 	description:
-		"Eventure is a modern event management platform that allows users to easily create, manage, and attend events. Whether it's a virtual webinar, a local concert, or a corporate conference, Eventure simplifies the process with features like event creation, RSVP tracking, ticket sales, and real-time notifications. With an intuitive dashboard for organizers and a seamless discovery experience for attendees, planning and participating in events has never been easier.",
+		"Eventure is a modern event management platform that allows users to easily create, manage, and attend events. Whether it's a virtual webinar, a local concert, or a corporate conference, Eventure simplifies the process with features like event creation, real-time notifications etc. With an intuitive dashboard for organizers and a seamless discovery experience for attendees, planning and participating in events has never been easier.",
 	title: "Eventure | Home",
 };
 
@@ -35,7 +37,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 			</head>
 
 			<body className={`antialiased ${genos.variable} ${saira.variable}`}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<Header />
+					{children}
+				</Providers>
 			</body>
 		</html>
 	);

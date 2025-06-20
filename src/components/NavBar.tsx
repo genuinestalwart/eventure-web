@@ -61,7 +61,7 @@ const NavBar: React.FC<Props> = ({
 
 					<ActionIcon
 						aria-label='logout'
-						color={disabled ? "gray.7" : "red.6"}
+						color='red.6'
 						disabled={disabled}
 						loading={loggingOut}
 						onClick={() => handleLogOut()}

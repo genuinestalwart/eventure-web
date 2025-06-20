@@ -62,7 +62,7 @@ const Header = () => {
 				<ConfirmModal
 					confirm={
 						<Button
-							color='red.6'
+							color='red'
 							onClick={() => handleConfirm()}
 							variant='filled'>
 							Log Out
@@ -70,7 +70,6 @@ const Header = () => {
 					}
 					onClose={() => setOpened(false)}
 					opened={opened}
-					setOpened={setOpened}
 					title={{
 						color: "red.6",
 						text: "Waiting for Confirmation",
