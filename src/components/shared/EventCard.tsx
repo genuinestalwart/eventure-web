@@ -73,6 +73,7 @@ const EventCard: React.FC<Props> = ({ item, refetch, value }) => {
 					</Button>
 				</Link>
 
+				{/* Delete Event Button */}
 				{value === "created" && (
 					<ActionIcon
 						color='red'
@@ -85,6 +86,7 @@ const EventCard: React.FC<Props> = ({ item, refetch, value }) => {
 				)}
 			</Flex>
 
+			{/* Delete Event Action */}
 			<ConfirmModal
 				confirm={
 					<Button

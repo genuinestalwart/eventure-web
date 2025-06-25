@@ -79,6 +79,7 @@ const EventsPage = () => {
 
 	return (
 		<RequireAuth>
+			{/* Full Tabs Container */}
 			<Tabs
 				className='container min-h-[calc(100vh_-_5rem)]'
 				color='primary.6'
@@ -109,6 +110,7 @@ const EventsPage = () => {
 				))}
 			</Tabs>
 
+			{/* The Plus Icon at the Bottom Right */}
 			<Affix position={{ bottom: 40, right: 40 }}>
 				<ActionIcon
 					aria-label='Create new event'

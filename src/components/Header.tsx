@@ -43,6 +43,7 @@ const Header = () => {
 			</Flex>
 
 			<Flex component='nav'>
+				{/* Shown on Desktop Screens */}
 				<NavBar
 					disabled={disabled}
 					handleLogOut={handleLogOut}
@@ -51,6 +52,7 @@ const Header = () => {
 					user={user}
 				/>
 
+				{/* Shown on Mobile Screens */}
 				<NavDrawer
 					disabled={disabled}
 					handleLogOut={handleLogOut}
@@ -59,6 +61,7 @@ const Header = () => {
 					user={user}
 				/>
 
+				{/* Logout Action */}
 				<ConfirmModal
 					confirm={
 						<Button

@@ -9,6 +9,7 @@ import {
 	GridCol,
 	Space,
 	Text,
+	ThemeIcon,
 	Title,
 } from "@mantine/core";
 import EventDetails from "@/components/page-event/EventDetails";
@@ -30,6 +31,7 @@ const EventWrapper = () => {
 	const axiosPublic = useAxiosPublic();
 	const { loading: uLoading, user } = useAuth();
 
+	// Get the Event Data
 	const {
 		data: event = null,
 		isLoading: eLoading,
@@ -46,6 +48,7 @@ const EventWrapper = () => {
 		},
 	});
 
+	// Get The Event Creator Name
 	const { data: fullName = null, isLoading: fnLoading } = useQuery<
 		string | null
 	>({
@@ -82,8 +85,11 @@ const EventWrapper = () => {
 			</GridCol>
 
 			<GridCol component='aside' span={{ base: 12, lg: 4 }}>
-				<Flex align='center' gap='md' p='sm'>
-					<IconUsersGroup />
+				{/* Participants */}
+				<Flex align='center' gap='xs' p='sm'>
+					<ThemeIcon color='primary.6' variant='light'>
+						<IconUsersGroup />
+					</ThemeIcon>
 
 					<Text c='secondary.3' size='sm'>
 						{!event.participants.length
@@ -104,6 +110,7 @@ const EventWrapper = () => {
 
 				<Space h='md' />
 
+				{/* Venue Link */}
 				<Card padding='lg' radius='md' w='100%' withBorder>
 					<Divider
 						label={

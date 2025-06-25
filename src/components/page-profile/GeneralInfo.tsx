@@ -74,6 +74,7 @@ const GeneralInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 				{updating ? (
 					<Loader color='primary.6' size='sm' />
 				) : (
+					// Edit Full Name Button
 					<ActionIcon color='gray' onClick={() => setOpened(true)}>
 						<IconEdit />
 					</ActionIcon>
@@ -94,6 +95,7 @@ const GeneralInfo: React.FC<Props> = ({ email, fullName, refetch, uid }) => {
 				<Text className='grow truncate'>{email}</Text>
 			</Flex>
 
+			{/* Edit Full Name Action */}
 			<ConfirmModal
 				confirm={
 					<Button

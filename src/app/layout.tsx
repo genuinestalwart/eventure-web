@@ -6,6 +6,7 @@ import "@mantine/dates/styles.css";
 import { ColorSchemeScript, mantineHtmlProps } from "@mantine/core";
 import Providers from "@/components/Providers";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const genos = Genos({
 	display: "swap",
@@ -40,6 +41,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 				<Providers>
 					<Header />
 					{children}
+					<Footer />
 				</Providers>
 			</body>
 		</html>

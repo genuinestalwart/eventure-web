@@ -46,6 +46,7 @@ const ProfilePage = () => {
 				<Space h='lg' />
 
 				<Grid>
+					{/* User Avatar */}
 					<GridCol span={{ base: 12, xs: 4 }}>
 						<Box
 							className='bg-neutral border border-black'
@@ -70,6 +71,7 @@ const ProfilePage = () => {
 						</Box>
 					</GridCol>
 
+					{/* General Info */}
 					<GeneralInfo
 						email={email}
 						fullName={fullName}
@@ -77,6 +79,7 @@ const ProfilePage = () => {
 						uid={uid}
 					/>
 
+					{/* Account Age */}
 					<GridCol span={{ base: 12, xs: 6 }}>
 						<Divider
 							label={
@@ -99,6 +102,7 @@ const ProfilePage = () => {
 						</Box>
 					</GridCol>
 
+					{/* Danger Zone */}
 					<DangerZone uid={uid} />
 				</Grid>
 			</Card>

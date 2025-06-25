@@ -103,6 +103,7 @@ const EventActions: React.FC<Props> = ({
 
 			<Space h='md' />
 
+			{/* Button Shown Based on User and Status */}
 			{user?.uid === createdBy && status === "upcoming" ? (
 				<Button
 					color='green'
@@ -150,6 +151,7 @@ const EventActions: React.FC<Props> = ({
 				</Button>
 			)}
 
+			{/* Shown only before Starting and Ending */}
 			<ConfirmModal
 				confirm={
 					<Button

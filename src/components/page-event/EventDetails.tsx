@@ -9,6 +9,7 @@ import {
 	Card,
 	Divider,
 	Flex,
+	Space,
 	Text,
 	Title,
 } from "@mantine/core";
@@ -20,6 +21,7 @@ import calendar from "dayjs/plugin/calendar";
 import { useState } from "react";
 import EventModal from "@/components/modals/EventModal";
 import { useRouter } from "next/navigation";
+import DisplayMarkdown from "@/components/shared/DisplayMarkdown";
 dayjs.extend(calendar);
 
 interface Props {
@@ -41,7 +43,7 @@ const EventDetails: React.FC<Props> = ({
 	setDisabled,
 	user,
 }) => {
-	const { createdAt, createdBy, status } = event;
+	const { createdAt, createdBy, description, status } = event;
 
 	const initialValues = {
 		description: event.description,
@@ -91,6 +93,7 @@ const EventDetails: React.FC<Props> = ({
 				align={{ xs: "center" }}
 				direction={{ base: "column", xs: "row" }}
 				gap={{ base: "sm", xs: "xl" }}>
+				{/* Title */}
 				<Box className='grow'>
 					<Title c='primary.6' order={1}>
 						{event.title}
@@ -110,6 +113,7 @@ const EventDetails: React.FC<Props> = ({
 					</Text>
 				</Box>
 
+				{/* Edit Button Shown Based on Screen Type */}
 				{user?.uid === createdBy && status === "upcoming" && (
 					<>
 						<ActionIcon
@@ -139,9 +143,10 @@ const EventDetails: React.FC<Props> = ({
 			</Flex>
 
 			<Divider color='secondary.3' mt='sm' />
+			<Space h='md' />
+			<DisplayMarkdown text={description} />
 
-			{/* Description in Markdown */}
-
+			{/* Edit Event Action */}
 			<EventModal
 				disabled={disabled}
 				form={form}

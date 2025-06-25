@@ -1,5 +1,5 @@
 "use client";
-import { ActionIcon, Avatar, Flex, Loader } from "@mantine/core";
+import { ActionIcon, Avatar, Flex, Loader, ThemeIcon } from "@mantine/core";
 import NavLink from "@/components/shared/NavLink";
 import Link from "next/link";
 import { IconLogout, IconUserCircle } from "@tabler/icons-react";
@@ -55,7 +55,15 @@ const NavBar: React.FC<Props> = ({
 							radius='xl'
 							ref={ref}
 							src={user.avatar ? user.avatar : null}>
-							<IconUserCircle />
+							<ThemeIcon
+								color={
+									"/profile" === pathname
+										? "primary.6"
+										: "secondary.3"
+								}
+								radius='xl'>
+								<IconUserCircle />
+							</ThemeIcon>
 						</Avatar>
 					</Link>
 

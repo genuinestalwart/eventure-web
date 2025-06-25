@@ -35,4 +35,14 @@
 	h6 {
 		@apply font-genos;
 	}
+
+	.markdown {
+		img,
+		video {
+			@apply w-full;
+		}
+		video {
+			@apply aspect-video;
+		}
+	}
 }
